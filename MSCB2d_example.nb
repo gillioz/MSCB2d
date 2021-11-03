@@ -1,0 +1,3481 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    142644,       3473]
+NotebookOptionsPosition[    137847,       3381]
+NotebookOutlinePosition[    138266,       3397]
+CellTagsIndexPosition[    138223,       3394]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Loading the package", "Subsection",
+ CellChangeTimes->{{3.778394198963154*^9, 
+  3.778394205130783*^9}},ExpressionUUID->"6eadd471-5fc9-4efe-89b3-\
+7fadd318007a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "MSCB2d`"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.753039487805625*^9, 3.753039488347769*^9}, {
+  3.778389828893538*^9, 3.7783898298723516`*^9}, {3.77839006063094*^9, 
+  3.778390060843425*^9}, {3.7783908825901527`*^9, 3.7783908849588737`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"9213be8c-6cc2-446d-9d86-eac867ca8763"],
+
+Cell[BoxData["\<\"MSCB2d is a Mathematica package that \
+evaluates\\nMomentum-Space Conformal Blocks in a 2d CFT.\\n\\nThe Wightman \
+4-point function\\n  \
+\[LeftAngleBracket]\[CapitalOmega]|\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(4\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \\(4\\)]\\))\\!\\(\\*SubscriptBox[\
+\\(O\\), \\(3\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(3\\)]\\))\\!\\(\\*SubscriptBox[\\(O\\), \\(2\\)]\\)(\\!\\(\\*SubscriptBox[\
+\\(p\\), \\(2\\)]\\))\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(1\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \\(1\\)]\\))|\[CapitalOmega]\
+\[RightAngleBracket]\\n    = (2\[Pi]\\!\\(\\*SuperscriptBox[\\()\\), \\(2\\)]\
+\\) \[Delta](\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(1\\)]\\)+\\!\\(\\*SubscriptBox[\\(p\\), \\(2\\)]\\)+\\!\\(\\*SubscriptBox[\
+\\(p\\), \\(3\\)]\\)+\\!\\(\\*SubscriptBox[\\(p\\), \\(4\\)]\\)) \
+G(\\!\\(\\*SubscriptBox[\\(p\\), \\(a\\)]\\))\\nadmits the conformal block \
+expansion\\n  G(\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(a\\)]\\))=\\!\\(\\*UnderscriptBox[\\(\[Sum]\\), \\(x\\)]\\) \
+\\!\\(\\*SubscriptBox[\\(\[Lambda]\\), \\(12  \
+x\\)]\\)\\!\\(\\*SubscriptBox[\\(\[Lambda]\\), \\(x34\\)]\\) \
+\\!\\(\\*SubscriptBox[\\(G\\), \\(x\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(a\\)]\\))\\nThis package provides explicit expressions for \
+\\!\\(\\*SubscriptBox[\\(G\\), \\(x\\)]\\)\\nas a function of the conformal \
+weights (\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(a\\)]\\),\\!\\(\\*SubscriptBox[OverscriptBox[\\(h\\), \\(_\\)], \
+\\(a\\)]\\)) of\\nthe external (1,2,3,4) and exchange (x) operators\\nand of \
+the momenta \\!\\(\\*SubscriptBox[\\(p\\), \\(a\\)]\\).\\n\\nThe following \
+conventions are used for the momenta:\\n  \\!\\(\\*SubscriptBox[\\(p\\), \\(i\
+\\)]\\)=\\!\\(\\*SubscriptBox[\\(p\\), \\(1\\)]\\)   \\n  \
+\\!\\(\\*SubscriptBox[\\(p\\), \\(f\\)]\\)=-\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(4\\)]\\)\\n  k=\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(1\\)]\\)+\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(2\\)]\\)=-\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(3\\)]\\)-\\!\\(\\*SubscriptBox[\\(p\\), \\(4\\)]\\)\\nThe 4-point function \
+is identically zero unless\\nall 3 momenta \\!\\(\\*SubscriptBox[\\(p\\), \
+\\(i\\)]\\), \\!\\(\\*SubscriptBox[\\(p\\), \\(f\\)]\\) and k lie in the \
+future\\nlight-cone.\"\>"], "Print",
+ CellChangeTimes->{
+  3.778390720885384*^9, 3.77839088300865*^9, 3.778391130654962*^9, 
+   3.778391535842079*^9, 3.778391668123645*^9, {3.778391841778949*^9, 
+   3.7783918419449377`*^9}, 3.778392231827485*^9, 3.778395236305065*^9, 
+   3.778395380125373*^9, 3.7783955382692957`*^9, {3.778400708549588*^9, 
+   3.778400708622324*^9}, 3.778402083856248*^9, {3.7784023906327047`*^9, 
+   3.778402390700736*^9}, 3.77840280566339*^9, {3.778402861586677*^9, 
+   3.778402861652615*^9}, {3.7784030058024893`*^9, 3.77840300586998*^9}, 
+   3.778403061265337*^9, 3.7784031004942293`*^9, {3.778403160161834*^9, 
+   3.77840316024825*^9}, {3.778403211410241*^9, 3.7784032115128527`*^9}, {
+   3.7784033074739103`*^9, 3.778403307569551*^9}, {3.778403437258603*^9, 
+   3.778403437319022*^9}, {3.778416126001808*^9, 3.77841612625591*^9}, 
+   3.782561788482506*^9, {3.78256240673452*^9, 3.782562406797433*^9}, {
+   3.844935180295391*^9, 3.844935180539248*^9}},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"3be05d5c-f0a6-4e4f-9e85-50c4a7cca39f"]
+}, Open  ]],
+
+Cell["List of functions in the package:", "Text",
+ CellChangeTimes->{{3.778390516994707*^9, 
+  3.778390524060458*^9}},ExpressionUUID->"eb30aba3-2913-4aaf-94e6-\
+2255f1c48323"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MSCB2d`*"}]], "Input",
+ CellChangeTimes->{{3.778390502574798*^9, 3.778390510320388*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"25a6b5db-c05e-4dcb-adf2-7fdd28077f8b"],
+
+Cell[BoxData[
+ StyleBox[
+  FrameBox[GridBox[{
+     {
+      DynamicModuleBox[{Typeset`open$$ = True}, 
+       PaneSelectorBox[{False->
+        ButtonBox[
+         RowBox[{
+          
+          DynamicBox[FEPrivate`FrontEndResource[
+           "FEBitmaps", "RightPointerOpener"]], " ", 
+          StyleBox["MSCB2d`", "InformationGridGroupHeader"]}],
+         Appearance->None,
+         BaseStyle->"InformationGridLink",
+         ButtonFunction:>FEPrivate`Set[Typeset`open$$, True],
+         Evaluator->Automatic,
+         Method->"Preemptive"], True->
+        PaneBox[GridBox[{
+           {
+            ButtonBox[
+             RowBox[{
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], " ", 
+              StyleBox["MSCB2d`", "InformationGridGroupHeader"]}],
+             Appearance->None,
+             BaseStyle->"InformationGridLink",
+             ButtonFunction:>FEPrivate`Set[Typeset`open$$, False],
+             Evaluator->Automatic,
+             Method->"Preemptive"]},
+           {
+            PaneBox[GridBox[{
+               {
+                ButtonBox[
+                 StyleBox["GlobalCB", "InformationGridButton"],
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "GlobalCB", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic], 
+                ButtonBox[
+                 StyleBox["HolomorphicCB", "InformationGridButton"],
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "HolomorphicCB", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic], 
+                ButtonBox[
+                 StyleBox["Momentum", "InformationGridButton"],
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "Momentum", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic], 
+                ButtonBox[
+                 StyleBox["MomentumLC", "InformationGridButton"],
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "MomentumLC", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic], 
+                ButtonBox[
+                 StyleBox["Operator", "InformationGridButton"],
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "Operator", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic], 
+                ButtonBox[
+                 StyleBox["Operator\[CapitalDelta]j", "InformationGridButton"],
+                 
+                 Appearance->None,
+                 BaseStyle->"InformationGridLink",
+                 
+                 ButtonData:>{
+                  "Info-4577ad5f-75f9-4514-8a86-64687fe4b52e", {
+                   "Operator\[CapitalDelta]j", "MSCB2d`"}, False},
+                 ButtonNote->"MSCB2d`",
+                 Evaluator->Automatic]}
+              },
+              DefaultBaseStyle->"Text",
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+              GridBoxItemSize->{"Columns" -> {{
+                   Scaled[0.15833333333333333`]}}}],
+             ImageMargins->{{10, 0}, {0, 2}}]}
+          },
+          GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}],
+         FrameMargins->{{0, 0}, {8, 0}}]}, Dynamic[Typeset`open$$],
+        ImageSize->Automatic]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxDividers->{"ColumnsIndexed" -> {{False}}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.8]}, 
+        Offset[0.2]}}],
+   BaseStyle->"InformationTitleFrame"], "InformationGridPlain"]], "Output",
+ CellChangeTimes->{3.844935188469554*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"834b1f03-79f6-4bb7-aa49-112171a1fbca"]
+}, Open  ]],
+
+Cell["Holomorphic conformal block:", "Text",
+ CellChangeTimes->{{3.7783917963336163`*^9, 
+  3.778391803494907*^9}},ExpressionUUID->"65306e07-9cb2-416d-9e5d-\
+a46915d92d4a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "HolomorphicCB"}]], "Input",
+ CellChangeTimes->{{3.778391766081579*^9, 3.778391769628274*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"b5ac55b5-f86b-4c81-b808-71c323492953"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"HolomorphicCB[\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(4\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \\(3\\)]\\),\\!\\(\\*SubscriptBox[\
+\\(h\\), \\(2\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(1\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(x\\)]\\)][\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\),\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(+\\)]\\)]\\n\\nThe 2d conformal block can be split into left-\\nand \
+right-moving parts (or holomorphic blocks)\\n  \\!\\(\\*SubscriptBox[\\(G\\), \
+\\(x\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(a\\)]\\))=\\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(+\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \
+\\(+\\)]\\))\\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(-\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \\(-\\)]\\))\\nThis \
+function computes \\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(+\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \\(+\\)]\\)), which \
+depends on\\nthe components \\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\
+\\)]\\), \\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\) and \
+\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\\) of the momenta, \
+as\\nwell as on the (holomorphic) conformal \
+weights\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(4\\)]\\), \
+\\!\\(\\*SubscriptBox[\\(h\\), \\(3\\)]\\), \\!\\(\\*SubscriptBox[\\(h\\), \
+\\(2\\)]\\), \\!\\(\\*SubscriptBox[\\(h\\), \\(1\\)]\\) and \
+\\!\\(\\*SubscriptBox[\\(h\\), \\(x\\)]\\).\\n\\nWhen all external operators \
+are identical, it\\nis possible to use instead\\n  \
+HolomorphicCB[h,\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(x\\)]\\)][\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\),\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\\)]\\n\"\>",
+              "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  
+                  StyleBox["\<\" SubValue Definitions\"\>", 
+                   "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"SubValues\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "SubValues", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"HolomorphicCB", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`h4_", ",", "MSCB2d`Private`h3_", ",", 
+                    "MSCB2d`Private`h2_", ",", "MSCB2d`Private`h1_", ",", 
+                    "MSCB2d`Private`hx_"}], "]"}], "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`kf_", ",", "MSCB2d`Private`k_", ",", 
+                    "MSCB2d`Private`ki_"}], "]"}], ":=", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"NumericQ", "[", "MSCB2d`Private`hx", "]"}], "&&", 
+                    RowBox[{"MSCB2d`Private`hx", "\[Equal]", "0"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"MSCB2d`Private`h1", "===", "MSCB2d`Private`h2"}],
+                     "&&", 
+                    
+                    RowBox[{"MSCB2d`Private`h3", "===", 
+                    "MSCB2d`Private`h4"}]}], ",", "0", ",", 
+                    RowBox[{"Message", "[", 
+                    RowBox[{
+                    StyleBox[
+                    RowBox[{"HolomorphicCB", "::", "ZeroConformalWeight"}], 
+                    "MessageName"], ",", "MSCB2d`Private`h4", ",", 
+                    "MSCB2d`Private`h3", ",", "MSCB2d`Private`h2", ",", 
+                    "MSCB2d`Private`h1"}], "]"}]}], "]"}], ",", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"Gamma", "[", 
+                    RowBox[{"2", " ", "MSCB2d`Private`hx"}], "]"}], " ", 
+                    SuperscriptBox["MSCB2d`Private`k", 
+                    RowBox[{"1", "-", 
+                    RowBox[{"2", " ", "MSCB2d`Private`hx"}]}]], " ", 
+                    RowBox[{
+                    RowBox[{"MSCB2d`Private`V", "[", 
+                    
+                    RowBox[{"MSCB2d`Private`h4", ",", "MSCB2d`Private`h3", 
+                    ",", "MSCB2d`Private`hx"}], "]"}], "[", 
+                    RowBox[{"MSCB2d`Private`kf", ",", "MSCB2d`Private`k"}], 
+                    "]"}], " ", 
+                    RowBox[{
+                    RowBox[{"MSCB2d`Private`V", "[", 
+                    
+                    RowBox[{"MSCB2d`Private`hx", ",", "MSCB2d`Private`h2", 
+                    ",", "MSCB2d`Private`h1"}], "]"}], "[", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`k"}], ",", 
+                    "MSCB2d`Private`ki"}], "]"}]}], 
+                    RowBox[{"\[Pi]", " ", 
+                    SqrtBox["2"]}]]}], "]"}]}]}, {" "}, {
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"HolomorphicCB", "[", 
+                    RowBox[{"MSCB2d`Private`h_", ",", "MSCB2d`Private`hx_"}], 
+                    "]"}], "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`pf_", ",", "MSCB2d`Private`k_", ",", 
+                    "MSCB2d`Private`pi_"}], "]"}], ":=", 
+                    RowBox[{
+                    RowBox[{"HolomorphicCB", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`h", ",", "MSCB2d`Private`h", ",", 
+                    "MSCB2d`Private`h", ",", "MSCB2d`Private`h", ",", 
+                    "MSCB2d`Private`hx"}], "]"}], "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`pf", ",", "MSCB2d`Private`k", ",", 
+                    "MSCB2d`Private`pi"}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`HolomorphicCB\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"HolomorphicCB[\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(4\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \\(3\\)]\\),\\!\\(\\*SubscriptBox[\
+\\(h\\), \\(2\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(1\\)]\\),\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(x\\)]\\)][\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\),\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(+\\)]\\)]\\n\\nThe 2d conformal block can be split into left-\\nand \
+right-moving parts (or holomorphic blocks)\\n  \\!\\(\\*SubscriptBox[\\(G\\), \
+\\(x\\)]\\)(\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(a\\)]\\))=\\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(+\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \
+\\(+\\)]\\))\\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(-\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \\(-\\)]\\))\\nThis \
+function computes \\!\\(\\*SubsuperscriptBox[\\(G\\), \\(x\\), \
+\\(+\\)]\\)(\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(a\\), \\(+\\)]\\)), which \
+depends on\\nthe components \\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\
+\\)]\\), \\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\) and \
+\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\\) of the momenta, \
+as\\nwell as on the (holomorphic) conformal \
+weights\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(4\\)]\\), \
+\\!\\(\\*SubscriptBox[\\(h\\), \\(3\\)]\\), \\!\\(\\*SubscriptBox[\\(h\\), \
+\\(2\\)]\\), \\!\\(\\*SubscriptBox[\\(h\\), \\(1\\)]\\) and \
+\\!\\(\\*SubscriptBox[\\(h\\), \\(x\\)]\\).\\n\\nWhen all external operators \
+are identical, it\\nis possible to use instead\\n  \
+HolomorphicCB[h,\\!\\(\\*SubscriptBox[\\(h\\), \
+\\(x\\)]\\)][\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\),\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\\)]\\n\"\>",
+              "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "HolomorphicCB[\!\(\*SubscriptBox[\(h\), \
+\(4\)]\),\!\(\*SubscriptBox[\(h\), \(3\)]\),\!\(\*SubscriptBox[\(h\), \
+\(2\)]\),\!\(\*SubscriptBox[\(h\), \(1\)]\),\!\(\*SubscriptBox[\(h\), \
+\(x\)]\)][\!\(\*SubsuperscriptBox[\(p\), \(f\), \
+\(+\)]\),\!\(\*SuperscriptBox[\(k\), \(+\)]\),\!\(\*SubsuperscriptBox[\(p\), \
+\(i\), \(+\)]\)]\n\nThe 2d conformal block can be split into left-\nand \
+right-moving parts (or holomorphic blocks)\n  \!\(\*SubscriptBox[\(G\), \
+\(x\)]\)(\!\(\*SubscriptBox[\(p\), \(a\)]\))=\!\(\*SubsuperscriptBox[\(G\), \
+\(x\), \(+\)]\)(\!\(\*SubsuperscriptBox[\(p\), \(a\), \
+\(+\)]\))\!\(\*SubsuperscriptBox[\(G\), \(x\), \
+\(-\)]\)(\!\(\*SubsuperscriptBox[\(p\), \(a\), \(-\)]\))\nThis function \
+computes \!\(\*SubsuperscriptBox[\(G\), \(x\), \
+\(+\)]\)(\!\(\*SubsuperscriptBox[\(p\), \(a\), \(+\)]\)), which depends on\n\
+the components \!\(\*SubsuperscriptBox[\(p\), \(f\), \(+\)]\), \
+\!\(\*SuperscriptBox[\(k\), \(+\)]\) and \!\(\*SubsuperscriptBox[\(p\), \
+\(i\), \(+\)]\) of the momenta, as\nwell as on the (holomorphic) conformal \
+weights\n\!\(\*SubscriptBox[\(h\), \(4\)]\), \!\(\*SubscriptBox[\(h\), \(3\)]\
+\), \!\(\*SubscriptBox[\(h\), \(2\)]\), \!\(\*SubscriptBox[\(h\), \(1\)]\) \
+and \!\(\*SubscriptBox[\(h\), \(x\)]\).\n\nWhen all external operators are \
+identical, it\nis possible to use instead\n  \
+HolomorphicCB[h,\!\(\*SubscriptBox[\(h\), \
+\(x\)]\)][\!\(\*SubsuperscriptBox[\(p\), \(f\), \
+\(+\)]\),\!\(\*SuperscriptBox[\(k\), \(+\)]\),\!\(\*SubsuperscriptBox[\(p\), \
+\(i\), \(+\)]\)]\n", "Documentation" -> None, "OwnValues" -> None, "UpValues" -> 
+    None, "DownValues" -> None, "SubValues" -> 
+    Information`InformationValueForm[
+     SubValues, MSCB2d`HolomorphicCB, {MSCB2d`HolomorphicCB[
+         Pattern[MSCB2d`Private`h4, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`h3, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`h2, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`h1, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`hx, 
+          Blank[]]][
+         Pattern[MSCB2d`Private`kf, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`k, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`ki, 
+          Blank[]]] :> If[
+         And[
+          NumericQ[MSCB2d`Private`hx], MSCB2d`Private`hx == 0], 
+         If[
+          And[
+          MSCB2d`Private`h1 === MSCB2d`Private`h2, MSCB2d`Private`h3 === 
+           MSCB2d`Private`h4], 0, 
+          Message[
+           MessageName[MSCB2d`HolomorphicCB, "ZeroConformalWeight"], 
+           MSCB2d`Private`h4, MSCB2d`Private`h3, MSCB2d`Private`h2, 
+           MSCB2d`Private`h1]], Gamma[2 MSCB2d`Private`hx] 
+         MSCB2d`Private`k^(1 - 2 MSCB2d`Private`hx) 
+         MSCB2d`Private`V[
+          MSCB2d`Private`h4, MSCB2d`Private`h3, MSCB2d`Private`hx][
+          MSCB2d`Private`kf, MSCB2d`Private`k] (
+          MSCB2d`Private`V[
+           MSCB2d`Private`hx, MSCB2d`Private`h2, MSCB2d`Private`h1][-
+            MSCB2d`Private`k, MSCB2d`Private`ki]/(Pi Sqrt[2]))], 
+       MSCB2d`HolomorphicCB[
+         Pattern[MSCB2d`Private`h, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`hx, 
+          Blank[]]][
+         Pattern[MSCB2d`Private`pf, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`k, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`pi, 
+          Blank[]]] :> 
+       MSCB2d`HolomorphicCB[
+        MSCB2d`Private`h, MSCB2d`Private`h, MSCB2d`Private`h, 
+         MSCB2d`Private`h, MSCB2d`Private`hx][
+        MSCB2d`Private`pf, MSCB2d`Private`k, MSCB2d`Private`pi]}], 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> None, "Attributes" -> {}, "FullName" -> 
+    "MSCB2d`HolomorphicCB"], False]]], "Output",
+ CellChangeTimes->{{3.778391770247332*^9, 3.778391793321476*^9}, {
+   3.7783918466039886`*^9, 3.7783918564560823`*^9}, 3.7783922351109457`*^9, 
+   3.7783952403369513`*^9, 3.7784007095547333`*^9, 3.778402090285593*^9, 
+   3.778402391610114*^9, 3.778402868231731*^9, 3.778403006773591*^9, 
+   3.7784030614313307`*^9, 3.778403161196074*^9, 3.7784032124497547`*^9, 
+   3.778403308498543*^9, 3.778403438218088*^9, 3.7784161327830687`*^9, 
+   3.7825617999557447`*^9, 3.78256241517024*^9, 3.844935194231679*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"e507772d-2601-4da9-8741-90a89ff8f5fb"]
+}, Open  ]],
+
+Cell["Global conformal block:", "Text",
+ CellChangeTimes->{{3.7783917963336163`*^9, 3.778391803494907*^9}, {
+  3.778394220309719*^9, 
+  3.778394221584682*^9}},ExpressionUUID->"97d1e6f3-2b9c-427c-818b-\
+dca63bbbd512"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "GlobalCB"}]], "Input",
+ CellChangeTimes->{{3.778391779277708*^9, 3.778391781725618*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"e9d62bbf-1dff-4c0a-9190-ba459f04f913"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"GlobalCB[\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(4\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \\(3\\)]\\),\\!\\(\\*SubscriptBox[\
+\\(O\\), \\(2\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(1\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(x\\)]\\)][\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(f\\)]\\),k,\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\)]\\n- \
+\\!\\(\\*SubscriptBox[\\(O\\), \\(a\\)]\\) are operators defined either in \
+terms of\\n  conformal weights with the command \
+Operator[h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\\)]\\n  or in terms of \
+scaling dimension and spin with\\n  the command Operator\[CapitalDelta]j[\
+\[CapitalDelta],j]\\n- \\!\\(\\*SubscriptBox[\\(p\\), \\(f\\)]\\), k and \
+\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\) are momenta defined either in\\n  \
+ordinary coordinates with the command\\n  \
+Momentum[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\)] or in light-cone \
+coordinates\\n  with the command MomentumLC[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(-\\)]\\)]\\n\\nWhen all \
+external operators are identical, it\\nis possible to use\\n  \
+GlobalCB[O,\\!\\(\\*SubscriptBox[\\(O\\), \\(x\\)]\\)][\\!\\(\\*SubscriptBox[\
+\\(p\\), \\(f\\)]\\),k,\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\)]\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  
+                  StyleBox["\<\" SubValue Definitions\"\>", 
+                   "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"SubValues\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "SubValues", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"GlobalCB", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`O4_Operator", ",", 
+                    "MSCB2d`Private`O3_Operator", ",", 
+                    "MSCB2d`Private`O2_Operator", ",", 
+                    "MSCB2d`Private`O1_Operator", ",", 
+                    "MSCB2d`Private`Ox_Operator"}], "]"}], "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`pf_MomentumLC", ",", 
+                    "MSCB2d`Private`k_MomentumLC", ",", 
+                    "MSCB2d`Private`pi_MomentumLC"}], "]"}], ":=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"HolomorphicCB", "[", 
+                    RowBox[{
+                    
+                    RowBox[{"MSCB2d`Private`O4", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O3", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O2", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O1", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`Ox", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "[", 
+                    RowBox[{
+                    
+                    RowBox[{"MSCB2d`Private`pf", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`k", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`pi", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], "]"}], " ", 
+                    RowBox[{
+                    RowBox[{"HolomorphicCB", "[", 
+                    RowBox[{
+                    
+                    RowBox[{"MSCB2d`Private`O4", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O3", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O2", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`O1", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`Ox", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "[", 
+                    RowBox[{
+                    
+                    RowBox[{"MSCB2d`Private`pf", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`k", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"MSCB2d`Private`pi", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], "]"}]}]}]}, {" "}, {
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"GlobalCB", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`OO_Operator", ",", 
+                    "MSCB2d`Private`Ox_Operator"}], "]"}], "[", 
+                    RowBox[{
+                    "MSCB2d`Private`pf_MomentumLC", ",", 
+                    "MSCB2d`Private`k_MomentumLC", ",", 
+                    "MSCB2d`Private`pi_MomentumLC"}], "]"}], ":=", 
+                    RowBox[{
+                    RowBox[{"GlobalCB", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`OO", ",", "MSCB2d`Private`OO", ",", 
+                    "MSCB2d`Private`OO", ",", "MSCB2d`Private`OO", ",", 
+                    "MSCB2d`Private`Ox"}], "]"}], "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`pf", ",", "MSCB2d`Private`k", ",", 
+                    "MSCB2d`Private`pi"}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`GlobalCB\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"GlobalCB[\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(4\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \\(3\\)]\\),\\!\\(\\*SubscriptBox[\
+\\(O\\), \\(2\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(1\\)]\\),\\!\\(\\*SubscriptBox[\\(O\\), \
+\\(x\\)]\\)][\\!\\(\\*SubscriptBox[\\(p\\), \
+\\(f\\)]\\),k,\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\)]\\n- \
+\\!\\(\\*SubscriptBox[\\(O\\), \\(a\\)]\\) are operators defined either in \
+terms of\\n  conformal weights with the command \
+Operator[h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\\)]\\n  or in terms of \
+scaling dimension and spin with\\n  the command Operator\[CapitalDelta]j[\
+\[CapitalDelta],j]\\n- \\!\\(\\*SubscriptBox[\\(p\\), \\(f\\)]\\), k and \
+\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\) are momenta defined either in\\n  \
+ordinary coordinates with the command\\n  \
+Momentum[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\)] or in light-cone \
+coordinates\\n  with the command MomentumLC[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(-\\)]\\)]\\n\\nWhen all \
+external operators are identical, it\\nis possible to use\\n  \
+GlobalCB[O,\\!\\(\\*SubscriptBox[\\(O\\), \\(x\\)]\\)][\\!\\(\\*SubscriptBox[\
+\\(p\\), \\(f\\)]\\),k,\\!\\(\\*SubscriptBox[\\(p\\), \\(i\\)]\\)]\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "GlobalCB[\!\(\*SubscriptBox[\(O\), \(4\)]\),\!\(\*SubscriptBox[\(O\), \
+\(3\)]\),\!\(\*SubscriptBox[\(O\), \(2\)]\),\!\(\*SubscriptBox[\(O\), \
+\(1\)]\),\!\(\*SubscriptBox[\(O\), \(x\)]\)][\!\(\*SubscriptBox[\(p\), \(f\)]\
+\),k,\!\(\*SubscriptBox[\(p\), \(i\)]\)]\n- \!\(\*SubscriptBox[\(O\), \
+\(a\)]\) are operators defined either in terms of\n  conformal weights with \
+the command Operator[h,\!\(\*OverscriptBox[\(h\), \(_\)]\)]\n  or in terms of \
+scaling dimension and spin with\n  the command Operator\[CapitalDelta]j[\
+\[CapitalDelta],j]\n- \!\(\*SubscriptBox[\(p\), \(f\)]\), k and \
+\!\(\*SubscriptBox[\(p\), \(i\)]\) are momenta defined either in\n  ordinary \
+coordinates with the command\n  Momentum[\!\(\*SuperscriptBox[\(p\), \
+\(0\)]\),\!\(\*SuperscriptBox[\(p\), \(1\)]\)] or in light-cone coordinates\n \
+ with the command MomentumLC[\!\(\*SuperscriptBox[\(p\), \
+\(+\)]\),\!\(\*SuperscriptBox[\(p\), \(-\)]\)]\n\nWhen all external operators \
+are identical, it\nis possible to use\n  GlobalCB[O,\!\(\*SubscriptBox[\(O\), \
+\(x\)]\)][\!\(\*SubscriptBox[\(p\), \(f\)]\),k,\!\(\*SubscriptBox[\(p\), \
+\(i\)]\)]", "Documentation" -> None, "OwnValues" -> None, "UpValues" -> None, 
+    "DownValues" -> None, "SubValues" -> 
+    Information`InformationValueForm[
+     SubValues, MSCB2d`GlobalCB, {MSCB2d`GlobalCB[
+         Pattern[MSCB2d`Private`O4, 
+          Blank[MSCB2d`Operator]], 
+         Pattern[MSCB2d`Private`O3, 
+          Blank[MSCB2d`Operator]], 
+         Pattern[MSCB2d`Private`O2, 
+          Blank[MSCB2d`Operator]], 
+         Pattern[MSCB2d`Private`O1, 
+          Blank[MSCB2d`Operator]], 
+         Pattern[MSCB2d`Private`Ox, 
+          Blank[MSCB2d`Operator]]][
+         Pattern[MSCB2d`Private`pf, 
+          Blank[MSCB2d`MomentumLC]], 
+         Pattern[MSCB2d`Private`k, 
+          Blank[MSCB2d`MomentumLC]], 
+         Pattern[MSCB2d`Private`pi, 
+          Blank[MSCB2d`MomentumLC]]] :> MSCB2d`HolomorphicCB[
+          Part[MSCB2d`Private`O4, 1], 
+          Part[MSCB2d`Private`O3, 1], 
+          Part[MSCB2d`Private`O2, 1], 
+          Part[MSCB2d`Private`O1, 1], 
+          Part[MSCB2d`Private`Ox, 1]][
+          Part[MSCB2d`Private`pf, 1], 
+          Part[MSCB2d`Private`k, 1], 
+          Part[MSCB2d`Private`pi, 1]] MSCB2d`HolomorphicCB[
+          Part[MSCB2d`Private`O4, 2], 
+          Part[MSCB2d`Private`O3, 2], 
+          Part[MSCB2d`Private`O2, 2], 
+          Part[MSCB2d`Private`O1, 2], 
+          Part[MSCB2d`Private`Ox, 2]][
+          Part[MSCB2d`Private`pf, 2], 
+          Part[MSCB2d`Private`k, 2], 
+          Part[MSCB2d`Private`pi, 2]], MSCB2d`GlobalCB[
+         Pattern[MSCB2d`Private`OO, 
+          Blank[MSCB2d`Operator]], 
+         Pattern[MSCB2d`Private`Ox, 
+          Blank[MSCB2d`Operator]]][
+         Pattern[MSCB2d`Private`pf, 
+          Blank[MSCB2d`MomentumLC]], 
+         Pattern[MSCB2d`Private`k, 
+          Blank[MSCB2d`MomentumLC]], 
+         Pattern[MSCB2d`Private`pi, 
+          Blank[MSCB2d`MomentumLC]]] :> 
+       MSCB2d`GlobalCB[
+        MSCB2d`Private`OO, MSCB2d`Private`OO, MSCB2d`Private`OO, 
+         MSCB2d`Private`OO, MSCB2d`Private`Ox][
+        MSCB2d`Private`pf, MSCB2d`Private`k, MSCB2d`Private`pi]}], 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> None, "Attributes" -> {}, "FullName" -> "MSCB2d`GlobalCB"], 
+   False]]], "Output",
+ CellChangeTimes->{{3.778391782405238*^9, 3.778391794594451*^9}, 
+   3.7783918573305597`*^9, 3.778395242592134*^9, 3.778400709769351*^9, 
+   3.778402092418955*^9, 3.778402391710891*^9, 3.7784028727877073`*^9, 
+   3.778403006869783*^9, 3.778403061530212*^9, 3.7784031613991213`*^9, 
+   3.77840321266856*^9, 3.778403308697915*^9, 3.778403438324606*^9, 
+   3.778416134351555*^9, 3.782561803081545*^9, 3.782562415274478*^9, 
+   3.84493519633142*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"eef7f88e-b344-42cf-b148-cef7888b8a90"]
+}, Open  ]],
+
+Cell["Operators:", "Text",
+ CellChangeTimes->{{3.778402102531638*^9, 
+  3.77840210738413*^9}},ExpressionUUID->"751ad2e1-459b-4a58-9d4a-\
+1d8563d55bd5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Operator"}]], "Input",
+ CellChangeTimes->{{3.7784021149425583`*^9, 3.778402117078805*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"ca459e11-7bf6-4bd3-ade2-d5749562a6a4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Operator[h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\
+\\)]\\ndefines an operator with conformal \
+weights\\n(h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  
+                  StyleBox["\<\" Format Definitions\"\>", 
+                   "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"FormatValues\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "FormatValues", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    StyleBox[
+                    "Operator /: MakeBoxes[Operator[MSCB2d`Private`h_, \
+MSCB2d`Private`hbar_], StandardForm] := SubscriptBox[\"O\", RowBox[{\"(\", \
+ToBoxes[MSCB2d`Private`h], \",\", ToBoxes[MSCB2d`Private`hbar], \")\"}]]", 
+                    ShowStringCharacters -> True, NumberMarks -> True]}, {
+                   " "}}, ColumnAlignments -> Left, 
+                  GridBaseline -> {Baseline, {1, 1}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`Operator\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Operator[h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\
+\\)]\\ndefines an operator with conformal \
+weights\\n(h,\\!\\(\\*OverscriptBox[\\(h\\), \\(_\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "Operator[h,\!\(\*OverscriptBox[\(h\), \(_\)]\)]\ndefines an operator \
+with conformal weights\n(h,\!\(\*OverscriptBox[\(h\), \(_\)]\))", 
+    "Documentation" -> None, "OwnValues" -> None, "UpValues" -> None, 
+    "DownValues" -> None, "SubValues" -> None, "DefaultValues" -> None, 
+    "NValues" -> None, "FormatValues" -> 
+    Information`InformationValueForm[FormatValues, MSCB2d`Operator, {MakeBoxes[
+         MSCB2d`Operator[
+          Pattern[MSCB2d`Private`h, 
+           Blank[]], 
+          Pattern[MSCB2d`Private`hbar, 
+           Blank[]]], StandardForm] :> SubscriptBox["O", 
+         RowBox[{"(", 
+           ToBoxes[MSCB2d`Private`h], ",", 
+           ToBoxes[MSCB2d`Private`hbar], ")"}]]}], "Options" -> None, 
+    "Attributes" -> {}, "FullName" -> "MSCB2d`Operator"], False]]], "Output",
+ CellChangeTimes->{3.7784021175504637`*^9, 3.7784023919113417`*^9, 
+  3.7784028891940727`*^9, 3.778403007060092*^9, 3.77840306162967*^9, 
+  3.778403161494171*^9, 3.778403212774613*^9, 3.778403308799466*^9, 
+  3.7784034385402*^9, 3.77841613577341*^9, 3.782561806820558*^9, 
+  3.782562415372628*^9, 3.844935198149979*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"9967ef69-8a87-4103-aab2-d9a04f0e1bbe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Operator\[CapitalDelta]j"}]], "Input",
+ CellChangeTimes->{{3.778402123255402*^9, 3.778402123992838*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"e6240da7-6411-46fc-beab-2f65ce1b6ad6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Operator\[CapitalDelta]j[\[CapitalDelta],j]\\\
+ndefines an operator with scaling dimension \[CapitalDelta]\\nand spin \
+j\\n\\nNote that when using this definition one\\nshould remember to take \
+into accounts operators\\nwith both positive and negative spin j\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"Operator\[CapitalDelta]j", "[", 
+                    
+                    RowBox[{
+                    "MSCB2d`Private`\[CapitalDelta]_", ",", 
+                    "MSCB2d`Private`j_"}], "]"}], ":=", 
+                    SubscriptBox["O", 
+                    RowBox[{"(", 
+                    FractionBox[
+                    
+                    RowBox[{
+                    "MSCB2d`Private`j", "+", 
+                    "MSCB2d`Private`\[CapitalDelta]"}], "2"], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`j"}], "+", 
+                    "MSCB2d`Private`\[CapitalDelta]"}], ")"}]}], ")"}]]}]}, {
+                   " "}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`Operator\[CapitalDelta]j\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Operator\[CapitalDelta]j[\[CapitalDelta],j]\\\
+ndefines an operator with scaling dimension \[CapitalDelta]\\nand spin \
+j\\n\\nNote that when using this definition one\\nshould remember to take \
+into accounts operators\\nwith both positive and negative spin j\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "Operator\[CapitalDelta]j[\[CapitalDelta],j]\ndefines an operator with \
+scaling dimension \[CapitalDelta]\nand spin j\n\nNote that when using this \
+definition one\nshould remember to take into accounts operators\nwith both \
+positive and negative spin j", "Documentation" -> None, "OwnValues" -> None, 
+    "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, MSCB2d`Operator\[CapitalDelta]j, {
+      MSCB2d`Operator\[CapitalDelta]j[
+         Pattern[MSCB2d`Private`\[CapitalDelta], 
+          Blank[]], 
+         Pattern[MSCB2d`Private`j, 
+          Blank[]]] :> 
+       MSCB2d`Operator[(MSCB2d`Private`\[CapitalDelta] + MSCB2d`Private`j)/
+         2, (MSCB2d`Private`\[CapitalDelta] - MSCB2d`Private`j)/2]}], 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, "Attributes" -> {}, "FullName" -> 
+    "MSCB2d`Operator\[CapitalDelta]j"], False]]], "Output",
+ CellChangeTimes->{3.778402124516828*^9, 3.778402392008032*^9, 
+  3.7784028907764473`*^9, 3.778403007156747*^9, 3.778403061729183*^9, 
+  3.778403161591443*^9, 3.778403212868988*^9, 3.7784033088915167`*^9, 
+  3.77840343863859*^9, 3.7784161372180862`*^9, 3.782561807946334*^9, 
+  3.782562415475795*^9, 3.844935199977498*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"8846e3ee-ce3c-4f8e-9fb9-ed3a751434e3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Operator", "[", 
+  RowBox[{"1", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.77840299765947*^9, 3.778403000304578*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"e234f368-3f60-4380-8e06-856d987ca49f"],
+
+Cell[BoxData[
+ SubscriptBox["O", 
+  RowBox[{"(", "1", ",", "2", ")"}]]], "Output",
+ CellChangeTimes->{3.778403007180313*^9, 3.7784030617484627`*^9, 
+  3.778403161621582*^9, 3.778403212900709*^9, 3.778403245523583*^9, 
+  3.7784033089206953`*^9, 3.778403438672195*^9, 3.778416144315488*^9, 
+  3.782562415501958*^9, 3.844935201216897*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"60143d54-09af-45b6-a985-1a4e1fd7668d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Operator\[CapitalDelta]j", "[", 
+  RowBox[{"1", ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.778403248567926*^9, 3.7784032511332827`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"f1a5109d-fb88-47cd-b959-264a46a1993c"],
+
+Cell[BoxData[
+ SubscriptBox["O", 
+  RowBox[{"(", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ")"}]]], "Output",
+ CellChangeTimes->{
+  3.778403251498207*^9, {3.778403308947427*^9, 3.778403311691967*^9}, 
+   3.7784034387049828`*^9, 3.7784161455267477`*^9, 3.7825624155281973`*^9, 
+   3.844935201733572*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"cd0a605d-eabf-4cf9-942e-864dd8cdca92"]
+}, Open  ]],
+
+Cell["Momenta:", "Text",
+ CellChangeTimes->{{3.778402096979932*^9, 
+  3.7784021014682217`*^9}},ExpressionUUID->"68c5292d-9ee6-4447-b961-\
+98966540c341"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Momentum"}]], "Input",
+ CellChangeTimes->{{3.778402133856266*^9, 3.778402138671891*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"0e727715-0d27-4371-b3ca-d878461fb681"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Momentum[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\)]\\ndefines a \
+2-momentum in terms of its components\\n(\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"Momentum", "[", 
+                    RowBox[{"MSCB2d`Private`p0_", ",", "MSCB2d`Private`p1_"}],
+                     "]"}], ":=", 
+                    
+                    RowBox[{
+                    "(", "MSCB2d`Private`p0", ",", "MSCB2d`Private`p1", 
+                    ")"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`Momentum\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Momentum[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\)]\\ndefines a \
+2-momentum in terms of its components\\n(\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "Momentum[\!\(\*SuperscriptBox[\(p\), \
+\(0\)]\),\!\(\*SuperscriptBox[\(p\), \(1\)]\)]\ndefines a 2-momentum in terms \
+of its components\n(\!\(\*SuperscriptBox[\(p\), \
+\(0\)]\),\!\(\*SuperscriptBox[\(p\), \(1\)]\))", "Documentation" -> None, 
+    "OwnValues" -> None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, MSCB2d`Momentum, {MSCB2d`Momentum[
+         Pattern[MSCB2d`Private`p0, 
+          Blank[]], 
+         Pattern[MSCB2d`Private`p1, 
+          Blank[]]] :> 
+       MSCB2d`MomentumLC[
+        MSCB2d`Private`p0 + MSCB2d`Private`p1, MSCB2d`Private`p0 - 
+         MSCB2d`Private`p1]}], "SubValues" -> None, "DefaultValues" -> None, 
+    "NValues" -> None, "FormatValues" -> None, "Options" -> None, 
+    "Attributes" -> {}, "FullName" -> "MSCB2d`Momentum"], False]]], "Output",
+ CellChangeTimes->{3.7784021391354847`*^9, 3.778402392103079*^9, 
+  3.7784028958339567`*^9, 3.77840301081914*^9, 3.778403061845583*^9, 
+  3.7784031617171*^9, 3.778403212995058*^9, 3.7784033152814074`*^9, 
+  3.778403438806538*^9, 3.778416149137741*^9, 3.782562415625907*^9, 
+  3.844935203308383*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"068acece-d127-41fb-a0bf-3252e9db9c21"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MomentumLC"}]], "Input",
+ CellChangeTimes->{{3.778402140819998*^9, 3.778402158082782*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"2e7baa07-16a9-4a91-831f-c69e5ebd6108"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"MomentumLC[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(-\\)]\\)]\\ndefines a \
+2-momentum in terms of its light-cone\\ncoordinates (\\!\\(\\*SuperscriptBox[\
+\\(p\\), \\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(-\\)]\\))=(\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\)-\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(1\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\)+\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  
+                  StyleBox["\<\" UpValue Definitions\"\>", 
+                   "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"UpValues\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "UpValues", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    FractionBox[
+                    RowBox[{"MSCB2d`Private`pm_", "+", "MSCB2d`Private`pp_"}],
+                     "2"], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`pm_"}], "+", 
+                    "MSCB2d`Private`pp_"}], ")"}]}], ")"}], " ", 
+                    "MSCB2d`Private`c_"}], "^:=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"MSCB2d`Private`c", " ", "MSCB2d`Private`pm"}], 
+                    "+", 
+                    RowBox[{"MSCB2d`Private`c", " ", "MSCB2d`Private`pp"}]}], 
+                    ")"}]}], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`c"}], " ", 
+                    "MSCB2d`Private`pm"}], "+", 
+                    RowBox[{"MSCB2d`Private`c", " ", "MSCB2d`Private`pp"}]}], 
+                    ")"}]}], ")"}], "/;", 
+                    RowBox[{"NumericQ", "[", "MSCB2d`Private`c", "]"}]}]}]}, {
+                   " "}, {
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    FractionBox[
+                    
+                    RowBox[{"MSCB2d`Private`p1m_", "+", 
+                    "MSCB2d`Private`p1p_"}], "2"], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`p1m_"}], "+", 
+                    "MSCB2d`Private`p1p_"}], ")"}]}], ")"}], "+", 
+                    RowBox[{"(", 
+                    FractionBox[
+                    
+                    RowBox[{"MSCB2d`Private`p2m_", "+", 
+                    "MSCB2d`Private`p2p_"}], "2"], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`p2m_"}], "+", 
+                    "MSCB2d`Private`p2p_"}], ")"}]}], ")"}]}], "^:=", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    
+                    RowBox[{"MSCB2d`Private`p1m", "+", "MSCB2d`Private`p1p", 
+                    "+", "MSCB2d`Private`p2m", "+", "MSCB2d`Private`p2p"}], 
+                    ")"}]}], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "MSCB2d`Private`p1m"}], "+", 
+                    "MSCB2d`Private`p1p", "-", "MSCB2d`Private`p2m", "+", 
+                    "MSCB2d`Private`p2p"}], ")"}]}], ")"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]},
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  
+                  StyleBox["\<\" Format Definitions\"\>", 
+                   "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"FormatValues\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "FormatValues", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    StyleBox[
+                    "MomentumLC /: MakeBoxes[MomentumLC[MSCB2d`Private`pp_, \
+MSCB2d`Private`pm_], StandardForm] := RowBox[{\"(\", \
+ToBoxes[(MSCB2d`Private`pp + MSCB2d`Private`pm)/2], \",\", \
+ToBoxes[(MSCB2d`Private`pp - MSCB2d`Private`pm)/2], \")\"}]", 
+                    ShowStringCharacters -> True, NumberMarks -> True]}, {
+                   " "}}, ColumnAlignments -> Left, 
+                  GridBaseline -> {Baseline, {1, 1}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"MSCB2d`MomentumLC\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"MomentumLC[\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \\(-\\)]\\)]\\ndefines a \
+2-momentum in terms of its light-cone\\ncoordinates (\\!\\(\\*SuperscriptBox[\
+\\(p\\), \\(+\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(-\\)]\\))=(\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\)-\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(1\\)]\\),\\!\\(\\*SuperscriptBox[\\(p\\), \
+\\(0\\)]\\)+\\!\\(\\*SuperscriptBox[\\(p\\), \\(1\\)]\\))\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "MomentumLC[\!\(\*SuperscriptBox[\(p\), \(+\)]\),\!\(\*SuperscriptBox[\(p\
+\), \(-\)]\)]\ndefines a 2-momentum in terms of its light-cone\ncoordinates (\
+\!\(\*SuperscriptBox[\(p\), \(+\)]\),\!\(\*SuperscriptBox[\(p\), \
+\(-\)]\))=(\!\(\*SuperscriptBox[\(p\), \(0\)]\)-\!\(\*SuperscriptBox[\(p\), \
+\(1\)]\),\!\(\*SuperscriptBox[\(p\), \(0\)]\)+\!\(\*SuperscriptBox[\(p\), \(1\
+\)]\))", "Documentation" -> None, "OwnValues" -> None, "UpValues" -> 
+    Information`InformationValueForm[
+     UpValues, MSCB2d`MomentumLC, {MSCB2d`MomentumLC[
+          Pattern[MSCB2d`Private`pp, 
+           Blank[]], 
+          Pattern[MSCB2d`Private`pm, 
+           Blank[]]] Pattern[MSCB2d`Private`c, 
+          Blank[]] :> Condition[
+         MSCB2d`MomentumLC[
+         MSCB2d`Private`c MSCB2d`Private`pp, MSCB2d`Private`c 
+          MSCB2d`Private`pm], 
+         NumericQ[MSCB2d`Private`c]], MSCB2d`MomentumLC[
+          Pattern[MSCB2d`Private`p1p, 
+           Blank[]], 
+          Pattern[MSCB2d`Private`p1m, 
+           Blank[]]] + MSCB2d`MomentumLC[
+          Pattern[MSCB2d`Private`p2p, 
+           Blank[]], 
+          Pattern[MSCB2d`Private`p2m, 
+           Blank[]]] :> 
+       MSCB2d`MomentumLC[
+        MSCB2d`Private`p1p + MSCB2d`Private`p2p, MSCB2d`Private`p1m + 
+         MSCB2d`Private`p2m]}], "DownValues" -> None, "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> 
+    Information`InformationValueForm[
+     FormatValues, MSCB2d`MomentumLC, {MakeBoxes[
+         MSCB2d`MomentumLC[
+          Pattern[MSCB2d`Private`pp, 
+           Blank[]], 
+          Pattern[MSCB2d`Private`pm, 
+           Blank[]]], StandardForm] :> RowBox[{"(", 
+          ToBoxes[(MSCB2d`Private`pp + MSCB2d`Private`pm)/2], ",", 
+          ToBoxes[(MSCB2d`Private`pp - MSCB2d`Private`pm)/2], ")"}]}], 
+    "Options" -> None, "Attributes" -> {}, "FullName" -> "MSCB2d`MomentumLC"],
+    False]]], "Output",
+ CellChangeTimes->{3.7784021587760677`*^9, 3.778402392197172*^9, 
+  3.778402897116383*^9, 3.778403011390407*^9, 3.778403061943583*^9, 
+  3.7784031618110437`*^9, 3.778403213099352*^9, 3.778403315933784*^9, 
+  3.778403438905541*^9, 3.778416152098579*^9, 3.78256241573138*^9, 
+  3.8449352040004663`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"bcb4b9cc-9e6e-4699-91d4-c421a34b39bd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Momentum", "[", 
+  RowBox[{"px", ",", "py"}], "]"}]], "Input",
+ CellChangeTimes->{{3.778402903952949*^9, 3.778402907912306*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"630573f7-13b6-4352-946b-9ceeaa871863"],
+
+Cell[BoxData[
+ RowBox[{"(", "px", ",", "py", ")"}]], "Output",
+ CellChangeTimes->{{3.77840290815553*^9, 3.77840292327973*^9}, {
+   3.778402958235154*^9, 3.778402959523903*^9}, 3.7784030122605457`*^9, 
+   3.778403061962968*^9, 3.778403104304809*^9, 3.7784031618427563`*^9, 
+   3.7784032131318903`*^9, 3.778403316430678*^9, 3.778403438938455*^9, 
+   3.778416153878696*^9, 3.7825624157593813`*^9, 3.8449352053026133`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"d30760fe-10a5-48ea-9648-13a754b90e2d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MomentumLC", "[", 
+  RowBox[{"1", ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.778402985066186*^9, 3.778403017302648*^9}, {
+  3.778403216721512*^9, 3.778403216803176*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"a9bf1cdb-c5de-406b-8a0d-4e1d4deb5cb4"],
+
+Cell[BoxData[
+ RowBox[{"(", 
+  FractionBox["1", "2"], ",", 
+  FractionBox["1", "2"], ")"}]], "Output",
+ CellChangeTimes->{{3.778403013200333*^9, 3.7784030197532187`*^9}, 
+   3.778403061981491*^9, 3.77840310523055*^9, {3.778403214055987*^9, 
+   3.77840324220989*^9}, 3.778403317168784*^9, 3.7784034389706793`*^9, 
+   3.7784161550507793`*^9, 3.7825624157858887`*^9, 3.844935205867701*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"e2720db9-ea98-4fdd-be21-681d846ca54b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Algebraic expressions", "Subsection",
+ CellChangeTimes->{{3.778395285228054*^9, 3.778395293283745*^9}, {
+  3.7783954255611134`*^9, 
+  3.778395427713338*^9}},ExpressionUUID->"1ea481ac-cb7c-4568-9c8b-\
+152ec6d5b7d6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HolomorphicCB", "[", 
+   RowBox[{"h4", ",", "h3", ",", "h2", ",", "h1", ",", "hx"}], "]"}], "[", 
+  RowBox[{"pf", ",", "k", ",", "pi"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7783952530193043`*^9, 3.7783952638495903`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"f346ceaf-271e-4f77-8973-71358eb31463"],
+
+Cell[BoxData[
+ RowBox[{"8", " ", 
+  SqrtBox["2"], " ", 
+  SuperscriptBox["k", 
+   RowBox[{"1", "-", 
+    RowBox[{"2", " ", "hx"}]}]], " ", 
+  SuperscriptBox["\[Pi]", "3"], " ", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{"2", " ", "hx"}], "]"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["k", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "h3", "-", "h4", "+", "hx"}]], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"-", "pf"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{"2", " ", "h4"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{"1", "-", "h3", "+", "h4", "-", "hx"}], ",", 
+              RowBox[{
+               RowBox[{"-", "h3"}], "+", "h4", "+", "hx"}], ",", 
+              RowBox[{"2", " ", "h4"}], ",", 
+              RowBox[{"-", 
+               FractionBox["pf", "k"]}]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{"2", " ", "h4"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{"h3", "-", "h4", "+", "hx"}], "]"}]}]], 
+          RowBox[{
+           RowBox[{"k", ">", "0"}], "&&", 
+           RowBox[{"pf", "<", "0"}], "&&", 
+           RowBox[{
+            RowBox[{"k", "+", "pf"}], ">", "0"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["k", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{"2", " ", "hx"}]}]], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"-", "pf"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "h3", "+", "h4", "-", "hx"}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{"1", "-", "h3", "-", "h4", "+", "hx"}], ",", 
+              RowBox[{
+               RowBox[{"-", "h3"}], "+", "h4", "+", "hx"}], ",", 
+              RowBox[{"2", " ", "hx"}], ",", 
+              RowBox[{"-", 
+               FractionBox["k", "pf"]}]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{"h3", "+", "h4", "-", "hx"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{"2", " ", "hx"}], "]"}]}]], 
+          RowBox[{
+           RowBox[{"k", ">", "0"}], "&&", 
+           RowBox[{"pf", "<", "0"}], "&&", 
+           RowBox[{
+            RowBox[{"k", "+", "pf"}], "<", "0"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["k", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{"2", " ", "hx"}]}]], " ", 
+            SuperscriptBox["pi", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "h1", "+", "h2", "-", "hx"}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{"1", "-", "h1", "-", "h2", "+", "hx"}], ",", 
+              RowBox[{"h1", "-", "h2", "+", "hx"}], ",", 
+              RowBox[{"2", " ", "hx"}], ",", 
+              FractionBox["k", "pi"]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{"h1", "+", "h2", "-", "hx"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{"2", " ", "hx"}], "]"}]}]], 
+          RowBox[{
+           RowBox[{"pi", ">", "0"}], "&&", 
+           RowBox[{
+            RowBox[{"-", "k"}], "<", "0"}], "&&", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "k"}], "+", "pi"}], ">", "0"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["k", 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", "h1", "+", "h2", "+", "hx"}]], " ", 
+            SuperscriptBox["pi", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{"2", " ", "h1"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{"1", "+", "h1", "-", "h2", "-", "hx"}], ",", 
+              RowBox[{"h1", "-", "h2", "+", "hx"}], ",", 
+              RowBox[{"2", " ", "h1"}], ",", 
+              FractionBox["pi", "k"]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{"2", " ", "h1"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{"-", "h1"}], "+", "h2", "+", "hx"}], "]"}]}]], 
+          RowBox[{
+           RowBox[{"pi", ">", "0"}], "&&", 
+           RowBox[{
+            RowBox[{"-", "k"}], "<", "0"}], "&&", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "k"}], "+", "pi"}], "<", "0"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}]}]], "Output",
+ CellChangeTimes->{3.782562418160779*^9, 3.84493520866691*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"481651d5-7866-4d3d-a2b0-6148a1e55798"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GlobalCB", "[", 
+    RowBox[{
+     RowBox[{"Operator\[CapitalDelta]j", "[", 
+      RowBox[{"\[CapitalDelta]", ",", "j"}], "]"}], ",", 
+     RowBox[{"Operator", "[", 
+      RowBox[{
+      "\"\<\!\(\*SuperscriptBox[\(h\), \(+\)]\)\>\"", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(h\), \(-\)]\)\>\""}], "]"}]}], "]"}], "[", 
+   
+   RowBox[{
+    RowBox[{"MomentumLC", "[", 
+     RowBox[{
+     "\"\<\!\(\*SubsuperscriptBox[\(p\), \(f\), \(+\)]\)\>\"", ",", 
+      "\"\<\!\(\*SubsuperscriptBox[\(p\), \(f\), \(-\)]\)\>\""}], "]"}], ",", 
+    
+    RowBox[{"MomentumLC", "[", 
+     RowBox[{
+     "\"\<\!\(\*SuperscriptBox[\(k\), \(+\)]\)\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(k\), \(-\)]\)\>\""}], "]"}], ",", 
+    RowBox[{"MomentumLC", "[", 
+     RowBox[{
+     "\"\<\!\(\*SubsuperscriptBox[\(p\), \(i\), \(+\)]\)\>\"", ",", 
+      "\"\<\!\(\*SubsuperscriptBox[\(p\), \(i\), \(-\)]\)\>\""}], "]"}]}], 
+   "]"}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.778403338251157*^9, 3.778403345348401*^9}, {
+  3.778403405017992*^9, 3.778403515683934*^9}, {3.778403642977161*^9, 
+  3.778403653261207*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"7bfc4552-ba43-4bf3-bb7f-326efd3034d8"],
+
+Cell[BoxData[
+ RowBox[{"128", " ", 
+  SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>", 
+   RowBox[{"1", "-", 
+    RowBox[{
+    "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}]}]], 
+  " ", 
+  SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>", 
+   RowBox[{"1", "-", 
+    RowBox[{
+    "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}]}]], 
+  " ", 
+  SuperscriptBox["\[Pi]", "6"], " ", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{"2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}],
+    "]"}], " ", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{"2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}],
+    "]"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(-\\)]\
+\\)\"\>"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}]], 
+            " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{
+              "1", "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], 
+              ",", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+               RowBox[{"-", "j"}], "+", "\[CapitalDelta]"}], ",", 
+              RowBox[{"-", 
+               
+               FractionBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(-\\)]\\)\"\>", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"]}]}],
+              "]"}]}], 
+           RowBox[{
+            RowBox[{
+            "Gamma", 
+             "[", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+             "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{"-", "j"}], "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(-\\)]\
+\\)\"\>", "<", "0"}], "&&", 
+           RowBox[{
+            
+            RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(-\\)]\\)\"\>", 
+             "+", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"}], 
+            ">", "0"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(-\\)]\
+\\)\"\>"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              "-", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             
+             RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+              "1", "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>", "+", "j", "-", "\[CapitalDelta]"}], ",", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], ",", 
+              RowBox[{"-", 
+               
+               FractionBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(-\\)]\\)\"\>", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(-\\)]\\)\"\>"]}]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+             "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}], 
+              "-", "j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(-\\)]\
+\\)\"\>", "<", "0"}], "&&", 
+           RowBox[{
+            
+            RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(-\\)]\\)\"\>", 
+             "+", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"}], 
+            "<", "0"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            
+            SuperscriptBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              "-", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             
+             RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+              "1", "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>", "+", "j", "-", "\[CapitalDelta]"}], ",", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], ",", 
+              
+              FractionBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\
+\>", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(-\\)]\\)\"\>"]}], 
+             "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+             "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}], 
+              "-", "j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(-\\)]\
+\\)\"\>", ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(-\\)]\
+\\)\"\>", ">", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            
+            SuperscriptBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(-\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>"}]], 
+            " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{
+              "1", "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(-\\)]\\)\"\>"}], 
+              ",", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+               RowBox[{"-", "j"}], "+", "\[CapitalDelta]"}], ",", 
+              
+              FractionBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(-\\)]\\)\"\>", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"]}], 
+             "]"}]}], 
+           RowBox[{
+            RowBox[{
+            "Gamma", 
+             "[", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(-\\)]\\)\"\>", 
+             "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{"-", "j"}], "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(-\\)]\
+\\)\"\>", ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(-\\)]\
+\\)\"\>", "<", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(-\\)]\\)\"\>"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\\)]\
+\\)\"\>"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}]], 
+            " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{
+              "1", "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], 
+              ",", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              ",", 
+              RowBox[{"j", "+", "\[CapitalDelta]"}], ",", 
+              RowBox[{"-", 
+               
+               FractionBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\)\"\>", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"]}]}],
+              "]"}]}], 
+           RowBox[{
+            RowBox[{
+            "Gamma", 
+             "[", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+             "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{"j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\\)]\
+\\)\"\>", "<", "0"}], "&&", 
+           RowBox[{
+            
+            RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\)\"\>", 
+             "+", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"}], 
+            ">", "0"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\\)]\
+\\)\"\>"}], ")"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              "+", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             
+             RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+              "1", "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>", "-", "j", "-", "\[CapitalDelta]"}], ",", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], ",", 
+              RowBox[{"-", 
+               
+               FractionBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\)\"\>", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\)\"\>"]}]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+             "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}], 
+              "+", "j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \\(+\\)]\
+\\)\"\>", "<", "0"}], "&&", 
+           RowBox[{
+            
+            RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(f\\), \
+\\(+\\)]\\)\"\>", 
+             "+", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"}], 
+            "<", "0"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}], " ", 
+  RowBox[{"(", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          FractionBox[
+           RowBox[{
+            
+            SuperscriptBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              "+", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}]}]], " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             
+             RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              ",", 
+              RowBox[{
+              "1", "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>", "-", "j", "-", "\[CapitalDelta]"}], ",", 
+              RowBox[{
+              "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], ",", 
+              
+              FractionBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\
+\>", "\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\\)\"\>"]}], 
+             "]"}]}], 
+           RowBox[{
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+             "2", " ", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{
+              RowBox[{
+              "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}], 
+              "+", "j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\
+\\)\"\>", ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\
+\\)\"\>", ">", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"}]}]},
+         {
+          FractionBox[
+           RowBox[{
+            
+            SuperscriptBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "j", "+", "\[CapitalDelta]"}]], " ", 
+            
+            SuperscriptBox["\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \
+\\(+\\)]\\)\"\>", 
+             RowBox[{
+              RowBox[{"-", "1"}], 
+              "+", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>"}]], 
+            " ", 
+            RowBox[{"Hypergeometric2F1", "[", 
+             RowBox[{
+              RowBox[{
+              "1", "-", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \
+\\(+\\)]\\)\"\>"}], 
+              ",", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+              ",", 
+              RowBox[{"j", "+", "\[CapitalDelta]"}], ",", 
+              
+              FractionBox["\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \
+\\(+\\)]\\)\"\>", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"]}], 
+             "]"}]}], 
+           RowBox[{
+            RowBox[{
+            "Gamma", 
+             "[", "\<\"\\!\\(\\*SuperscriptBox[\\(h\\), \\(+\\)]\\)\"\>", 
+             "]"}], " ", 
+            RowBox[{"Gamma", "[", 
+             RowBox[{"j", "+", "\[CapitalDelta]"}], "]"}]}]], 
+          RowBox[{
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\
+\\)\"\>", ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>", 
+            ">", "0"}], "&&", 
+           
+           RowBox[{"\<\"\\!\\(\\*SubsuperscriptBox[\\(p\\), \\(i\\), \\(+\\)]\
+\\)\"\>", "<", "\<\"\\!\\(\\*SuperscriptBox[\\(k\\), \\(+\\)]\\)\"\>"}]}]},
+         {"0", 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True], ")"}]}]], "Output",
+ CellChangeTimes->{{3.778403423831151*^9, 3.778403439042644*^9}, {
+   3.778403502544348*^9, 3.77840351722694*^9}, 3.778403655498314*^9, 
+   3.7784163151921053`*^9, 3.7825624307556753`*^9, 3.8449352121394*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"2aed5ccc-fdfc-4600-801d-9fd59643c613"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Special case ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["h", "X"], "=", "0"}], TraditionalForm]],ExpressionUUID->
+  "b217122a-15a0-45c2-89ee-bb6912d4a3d1"]
+}], "Subsection",
+ CellChangeTimes->{{3.7783941703526287`*^9, 3.778394190016306*^9}, {
+  3.7783954100626307`*^9, 
+  3.7783954143985786`*^9}},ExpressionUUID->"f1454c07-404f-44aa-8dce-\
+027ba5837665"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HolomorphicCB", "[", 
+   RowBox[{"h4", ",", "h3", ",", "h2", ",", "h1", ",", "0"}], "]"}], "[", 
+  RowBox[{"pf", ",", "k", ",", "pi"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7783952530193043`*^9, 3.7783952638495903`*^9}, {
+  3.7783953035801983`*^9, 3.778395310862129*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"01b0d3e4-9634-44d4-be31-e1f6d9d07efd"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "HolomorphicCB", "ZeroConformalWeight", 
+   "\"The holomorphic conformal block is ill-defined: the exchange operator \
+has conformal weight 0 but the external operators have distinct conformal \
+weights. This cannot happen in a healthy CFT. One must have \\!\\(\\*RowBox[{\
+\\\"h4\\\"}]\\)=\\!\\(\\*RowBox[{\\\"h3\\\"}]\\) and \
+\\!\\(\\*RowBox[{\\\"h2\\\"}]\\)=\\!\\(\\*RowBox[{\\\"h1\\\"}]\\)\"", 2, 19, 
+   1, 28047020667214419973, "Local", "MSCB2d`HolomorphicCB"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.844935216926476*^9},
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"a69c7f82-d780-4885-92d1-6126680a5c44"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HolomorphicCB", "[", 
+   RowBox[{"hf", ",", "hf", ",", "hi", ",", "hi", ",", "0"}], "]"}], "[", 
+  RowBox[{"pf", ",", "k", ",", "pi"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7783952530193043`*^9, 3.7783952638495903`*^9}, {
+  3.7783953035801983`*^9, 3.7783953196347027`*^9}, {3.778395390331628*^9, 
+  3.778395391686496*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"47897bda-3dbe-49a0-8048-117478ccebb1"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{
+  3.778395392076185*^9, 3.778395477855296*^9, 3.778395551881783*^9, {
+   3.778400696935892*^9, 3.778400712362159*^9}, 3.778401113037568*^9, {
+   3.778402439516818*^9, 3.778402469600113*^9}, 3.77840332295352*^9, 
+   3.7784163503410587`*^9, 3.7825624391025553`*^9, 3.844935222603911*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"add5e31c-c41b-4f2e-b4d7-eafd21758ae8"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1138.909090909091, 618.077922077922},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"bab1f7fe-969b-4db9-9967-096527ed6883"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 167, 3, 54, "Subsection",ExpressionUUID->"6eadd471-5fc9-4efe-89b3-7fadd318007a"],
+Cell[CellGroupData[{
+Cell[772, 29, 500, 10, 66, "Input",ExpressionUUID->"9213be8c-6cc2-446d-9d86-eac867ca8763",
+ InitializationCell->True],
+Cell[1275, 41, 3290, 51, 394, "Print",ExpressionUUID->"3be05d5c-f0a6-4e4f-9e85-50c4a7cca39f"]
+}, Open  ]],
+Cell[4580, 95, 175, 3, 35, "Text",ExpressionUUID->"eb30aba3-2913-4aaf-94e6-2255f1c48323"],
+Cell[CellGroupData[{
+Cell[4780, 102, 195, 3, 29, "Input",ExpressionUUID->"25a6b5db-c05e-4dcb-adf2-7fdd28077f8b"],
+Cell[4978, 107, 4846, 119, 96, "Output",ExpressionUUID->"834b1f03-79f6-4bb7-aa49-112171a1fbca"]
+}, Open  ]],
+Cell[9839, 229, 172, 3, 35, "Text",ExpressionUUID->"65306e07-9cb2-416d-9e5d-a46915d92d4a"],
+Cell[CellGroupData[{
+Cell[10036, 236, 200, 3, 29, "Input",ExpressionUUID->"b5ac55b5-f86b-4c81-b808-71c323492953"],
+Cell[10239, 241, 20404, 451, 391, "Output",ExpressionUUID->"e507772d-2601-4da9-8741-90a89ff8f5fb"]
+}, Open  ]],
+Cell[30658, 695, 216, 4, 35, "Text",ExpressionUUID->"97d1e6f3-2b9c-427c-818b-dca63bbbd512"],
+Cell[CellGroupData[{
+Cell[30899, 703, 195, 3, 29, "Input",ExpressionUUID->"e9d62bbf-1dff-4c0a-9190-ba459f04f913"],
+Cell[31097, 708, 19801, 442, 367, "Output",ExpressionUUID->"eef7f88e-b344-42cf-b148-cef7888b8a90"]
+}, Open  ]],
+Cell[50913, 1153, 151, 3, 35, "Text",ExpressionUUID->"751ad2e1-459b-4a58-9d4a-1d8563d55bd5"],
+Cell[CellGroupData[{
+Cell[51089, 1160, 197, 3, 29, "Input",ExpressionUUID->"ca459e11-7bf6-4bd3-ade2-d5749562a6a4"],
+Cell[51289, 1165, 10601, 262, 137, "Output",ExpressionUUID->"9967ef69-8a87-4103-aab2-d9a04f0e1bbe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61927, 1432, 212, 3, 29, "Input",ExpressionUUID->"e6240da7-6411-46fc-beab-2f65ce1b6ad6"],
+Cell[62142, 1437, 11550, 280, 227, "Output",ExpressionUUID->"8846e3ee-ce3c-4f8e-9fb9-ed3a751434e3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73729, 1722, 228, 4, 29, "Input",ExpressionUUID->"e234f368-3f60-4380-8e06-856d987ca49f"],
+Cell[73960, 1728, 414, 7, 34, "Output",ExpressionUUID->"60143d54-09af-45b6-a985-1a4e1fd7668d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74411, 1740, 247, 4, 29, "Input",ExpressionUUID->"f1a5109d-fb88-47cd-b959-264a46a1993c"],
+Cell[74661, 1746, 398, 9, 42, "Output",ExpressionUUID->"cd0a605d-eabf-4cf9-942e-864dd8cdca92"]
+}, Open  ]],
+Cell[75074, 1758, 152, 3, 35, "Text",ExpressionUUID->"68c5292d-9ee6-4447-b961-98966540c341"],
+Cell[CellGroupData[{
+Cell[75251, 1765, 196, 3, 29, "Input",ExpressionUUID->"0e727715-0d27-4371-b3ca-d878461fb681"],
+Cell[75450, 1770, 10890, 268, 139, "Output",ExpressionUUID->"068acece-d127-41fb-a0bf-3252e9db9c21"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[86377, 2043, 198, 3, 29, "Input",ExpressionUUID->"2e7baa07-16a9-4a91-831f-c69e5ebd6108"],
+Cell[86578, 2048, 16332, 391, 137, "Output",ExpressionUUID->"bcb4b9cc-9e6e-4699-91d4-c421a34b39bd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[102947, 2444, 231, 4, 29, "Input",ExpressionUUID->"630573f7-13b6-4352-946b-9ceeaa871863"],
+Cell[103181, 2450, 497, 7, 33, "Output",ExpressionUUID->"d30760fe-10a5-48ea-9648-13a754b90e2d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103715, 2462, 280, 5, 29, "Input",ExpressionUUID->"a9bf1cdb-c5de-406b-8a0d-4e1d4deb5cb4"],
+Cell[103998, 2469, 465, 8, 47, "Output",ExpressionUUID->"e2720db9-ea98-4fdd-be21-681d846ca54b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[104512, 2483, 220, 4, 54, "Subsection",ExpressionUUID->"1ea481ac-cb7c-4568-9c8b-152ec6d5b7d6"],
+Cell[CellGroupData[{
+Cell[104757, 2491, 337, 6, 29, "Input",ExpressionUUID->"f346ceaf-271e-4f77-8973-71358eb31463"],
+Cell[105097, 2499, 7245, 199, 221, "Output",ExpressionUUID->"481651d5-7866-4d3d-a2b0-6148a1e55798"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112379, 2703, 1229, 30, 50, "Input",ExpressionUUID->"7bfc4552-ba43-4bf3-bb7f-326efd3034d8"],
+Cell[113611, 2735, 21778, 578, 477, "Output",ExpressionUUID->"2aed5ccc-fdfc-4600-801d-9fd59643c613"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135438, 3319, 387, 11, 54, "Subsection",ExpressionUUID->"f1454c07-404f-44aa-8dce-027ba5837665"],
+Cell[CellGroupData[{
+Cell[135850, 3334, 387, 7, 29, "Input",ExpressionUUID->"01b0d3e4-9634-44d4-be31-e1f6d9d07efd"],
+Cell[136240, 3343, 688, 13, 40, "Message",ExpressionUUID->"a69c7f82-d780-4885-92d1-6126680a5c44"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[136965, 3361, 438, 8, 29, "Input",ExpressionUUID->"47897bda-3dbe-49a0-8048-117478ccebb1"],
+Cell[137406, 3371, 413, 6, 33, "Output",ExpressionUUID->"add5e31c-c41b-4f2e-b4d7-eafd21758ae8"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
